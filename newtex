@@ -1,0 +1,23 @@
+#!/bin/bash
+sedi () {
+    sed --version >/dev/null 2>&1 && sed -i -- "$@" || sed -i "" "$@"
+}
+
+TEMPLATE_DIR=$HOME/template
+PROJECT_NAME=$@
+
+if [ -d "$PROJECT_NAME" ]
+then
+  echo "$PROJECT_NAME" already exists
+  exit 1
+fi
+
+mkdir "$PROJECT_NAME"
+cp "$TEMPLATE_DIR/Makefile" "$PROJECT_NAME"
+cp "$TEMPLATE_DIR/template.tex" "$PROJECT_NAME/$PROJECT_NAME.tex"
+cp "$TEMPLATE_DIR/.gitignore" "$PROJECT_NAME"
+
+cd "$PROJECT_NAME"
+sedi "s/Title/$PROJECT_NAME/g" "$PROJECT_NAME.tex"
+
+git init
