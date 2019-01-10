@@ -6,6 +6,12 @@ sedi () {
 TEMPLATE_DIR=$HOME/template
 PROJECT_NAME=$@
 
+if [ -z "$PROJECT_NAME" ]
+then
+  echo Please enter a project name
+  exit 1
+fi
+
 if [ -d "$PROJECT_NAME" ]
 then
   echo "$PROJECT_NAME" already exists
