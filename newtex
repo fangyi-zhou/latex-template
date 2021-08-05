@@ -24,7 +24,6 @@ cp "$TEMPLATE_DIR/template.tex" "$PROJECT_NAME/main.tex"
 cp "$TEMPLATE_DIR/.gitignore" "$PROJECT_NAME"
 cp "$TEMPLATE_DIR/references.bib" "$PROJECT_NAME"
 
-cd "$PROJECT_NAME"
-sedi "s/Title/$PROJECT_NAME/g" "$PROJECT_NAME.tex"
+sedi "s/Title/$PROJECT_NAME/g" "$PROJECT_NAME/main.tex"
 
 git init
